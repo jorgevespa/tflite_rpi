@@ -1,7 +1,7 @@
 **TensorFlow Lite en Raspberry Pi 4**  
 Lo modelos mejor optimizados que fueron encontrados para funcionar sin GPU, en una Rpi4 de 4GB.
 
-**Clonar el repo:**  
+**Clonar el repositorio:**  
 git clone https://github.com/jorgevespa/tflite_rpi.git
 
 **Acceder al directorio:**  
@@ -24,7 +24,7 @@ bash get_pi_req.sh
 python3 TFL_object_detection.py --modeldir=object_detection
 
 **Opciones:**  
-Es posible cambiar los modelos del directorio "modelos" en el paramtero --modeldir  
+Es posible cambiar los modelos del directorio "modelos" en el parametro --modeldir  
 **face_mask_v2:** Detector de barbijo (Promedio 2.7 FPS)  
 **object_detection:** Detector de objetos (Promedio 4.2 FPS)  
 **ssd_mobilenet_v3_small:** Detector de objetos (Promedio 4.7 FPS)  
@@ -32,5 +32,5 @@ Es posible cambiar los modelos del directorio "modelos" en el paramtero --modeld
 Es posible usar una camara IP con RTSP (Comentar linea 22/Descomentar linea 23):
 self.stream = cv2.VideoCapture('rtsp://admin:admin@PUBLIC_IP:554/0')
 
-Es posible cambiar la resolucion del video:  
+Es posible cambiar la resolucion del video agregando el parámetro:  
 --resolution=640x48
