@@ -20,6 +20,7 @@ class VideoStream:
     def __init__(self,resolution=(640,480),framerate=30):
         # Initialize the PiCamera and the camera image stream
         self.stream = cv2.VideoCapture(0)
+        #self.stream = cv2.VideoCapture('rtsp://admin:CotasNet123@190.180.33.206:554/2')
         ret = self.stream.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
         ret = self.stream.set(3,resolution[0])
         ret = self.stream.set(4,resolution[1])
@@ -103,10 +104,10 @@ if use_TPU:
 CWD_PATH = os.getcwd()
 
 # Path to .tflite file, which contains the model that is used for object detection
-PATH_TO_CKPT = os.path.join(CWD_PATH,MODEL_NAME,GRAPH_NAME)
+PATH_TO_CKPT = os.path.join(CWD_PATH,'modelos/'+MODEL_NAME,GRAPH_NAME)
 
 # Path to label map file
-PATH_TO_LABELS = os.path.join(CWD_PATH,MODEL_NAME,LABELMAP_NAME)
+PATH_TO_LABELS = os.path.join(CWD_PATH,'modelos/'+MODEL_NAME,LABELMAP_NAME)
 
 # Load the label map
 with open(PATH_TO_LABELS, 'r') as f:
@@ -188,10 +189,18 @@ while True:
             ymax = int(min(imH,(boxes[i][2] * imH)))
             xmax = int(min(imW,(boxes[i][3] * imW)))
             
-            cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
+            
+        
+            #cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
 
             # Draw label
             object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
+            if (MODEL_NAME=='mask_model' or MODEL_NAME=='face_mask_v2'):
+                rect_color = (10, 255, 0) if object_name == 'Con mascara' else (0, 0, 255)
+                cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), rect_color, 4)
+            else:
+                cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
+            
             label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
             labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
             label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
