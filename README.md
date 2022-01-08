@@ -1,10 +1,10 @@
-**TensorFlow Lite en Raspberry Pi 4**
+**TensorFlow Lite en Raspberry Pi 4** 
 Lo modelos mejor optimizados que fueron encontrados para funcionar sin GPU, en una Rpi4 de 4GB.
 
-**Clonar el repo:**
+**Clonar el repo:** 
 git clone https://github.com/jorgevespa/tflite_rpi.git
 
-**Acceder al directorio:**
+**Acceder al directorio:** 
 cd tflite_rpi
 
 **Instalar VirtualEnv:**
