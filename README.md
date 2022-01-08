@@ -7,23 +7,23 @@ git clone https://github.com/jorgevespa/tflite_rpi.git
 **Acceder al directorio:**  
 cd tflite_rpi
 
-**Instalar VirtualEnv:**
+**Instalar VirtualEnv:**  
 pip3 install virtualenv
 
-**Crear el ambiente virtual:**
+**Crear el ambiente virtual:**  
 python3 -m venv tflite_rpi-env
 
-**Activar el ambiente virtual:**
+**Activar el ambiente virtual:**  
 source tflite_rpi-env/bin/activate
 
-**Instalar los requerimientos:**
-sudo chmod +x get_pi_req.sh
+**Instalar los requerimientos:**  
+sudo chmod +x get_pi_req.sh  
 bash get_pi_req.sh
 
-**Correr el script:**
+**Correr el script:**  
 python3 TFL_object_detection.py --modeldir=object_detection
 
-**Opciones:**
+**Opciones:**  
 Es posible cambiar los modelos del directorio "modelos" en el paramtero --modeldir
 face_mask_v2: Detector de barbijo (Promedio 2.7 FPS)
 object_detection: Detector de objetos (Promedio 4.2 FPS)
